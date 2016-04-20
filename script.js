@@ -1,14 +1,19 @@
-function toggleSearch(state) {
-    switch(state) {
+function toggleSearch() {
+    switch(window.location.hash) {
         case '#search':
-            $('.wrapper').html($('.search-menu'));
+            $('.wrapper').html($('.search-menu').clone());
             break;
         default:
-            $('.wrapper').html($('.initial-menu'));
+            $('.wrapper').html($('.initial-menu').clone());
             break;
     }
 }
-
 $(document).ready(function() {
-    toggleSearch(window.location.hash);
+    toggleSearch();
+    $(window).on('hashchange', function() {
+        toggleSearch();
+    });
 });
+function search(input) {
+    
+}
